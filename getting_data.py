@@ -7,12 +7,12 @@ col = db["attributes"]
 col2 = db["attributehistories"]
 
 
-def attributeCurrentValue(ide):
+def attribute_current_value(ide):
     for document in col.find({"_id": ide}):
         return document["currentValue"]
 
 
-def attributeValue(ide):
+def attribute_value(ide):
     for document in col2.find({"_id": ide}):
         return document["value"]
 
@@ -23,12 +23,12 @@ def search_histories(ide, dat):
             return document["_id"]
 
 
-def sumLast360Days(ide):
+def sum_last_360_days(ide):
     dt = datetime.now()
     sum = 0
     while str(dt)[0:10] >= str(datetime.now() - timedelta(days=360)):
         ID = search_histories(ide, dt)
-        sum = sum + float(attributeValue(ID))
+        sum = sum + float(attribute_value(ID))
         dt = dt - timedelta(days=30)
     return sum
 
@@ -38,6 +38,6 @@ def sum_year2(col, ide):
     sum = 0
     while str(dt)[0:10] >= str(datetime.now() - timedelta(days=360))[0:10]:
         ID = search_histories(col, ide, dt)
-        sum = sum + float(attributeValue(col, ID))
+        sum = sum + float(attribute_value(col, ID))
         dt = dt - timedelta(days=30)
     return sum

@@ -29,23 +29,23 @@ if DayOfLastyear < 10:
     DayOfLastyear = "0" + str(DayOfLastyear)
 
 
-def CurrentDate():
+def current_date():
     CurrentDate = CurrentYear + "-" + str(CurrentMonth) + "-" + str(CurrentDay)
     return CurrentDate
 
 
-def FirstOfThisMonth():
+def first_of_this_month():
     FirstOfThisMonth = CurrentYear + "-" + str(CurrentMonth) + "-01"
     return FirstOfThisMonth
 
 
-def LastMonthDate():
+def last_month_date():
     LastMonthDate = (
         YearOfLastMonth + "-" + str(LastMonthFormatted) + "-" + str(ThirtyDaysAgo)
     )
     return LastMonthDate
 
 
-def AYearAgo():
-    YearAgo = PreviousYear + "-" + str(MonthOfLastYear) + "-" + str(DayOfLastyear)
-    return AYearAgo
+def a_year_ago():
+    year_ago = PreviousYear + "-" + str(MonthOfLastYear) + "-" + str(DayOfLastyear)
+    return year_ago
