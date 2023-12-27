@@ -43,81 +43,80 @@ def get_list_element(Source, Destiny, Value):
 ls_current_values = []
 
 ls_current_values.append(
-    get_list_element("Billings", "Electricity Grid", round(100 * electricity_usage_kWh / total_energy, 2))
-)
-ls_current_values.append(
-    get_list_element("Billings", "Natural Gas", round(100 * natural_gas_usage_kWh / total_energy, 2))
-)
-
-
-ls_current_values.append(
-    get_list_element("Natural Gas", "Miscellaneous", round(100 * natural_gas_consumed_by_miscellaneous / total_energy, 2))
+    get_list_element("Billings", "Electricity Grid", round(electricity_usage_kWh, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Natural Gas", "Boilers", round(100 * natural_gas_consumed_by_boilers / total_energy, 2))
+    get_list_element("Billings", "Natural Gas", round(natural_gas_usage_kWh, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Natural Gas", "Steam Boilers", round(100 * natural_gas_consumed_by_steam_boilers / total_energy, 2))
+    get_list_element("Natural Gas", "Miscellaneous", round(natural_gas_consumed_by_miscellaneous, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Natural Gas", "Cells", round(100 * natural_gas_consumed_by_cells / total_energy, 2))
+    get_list_element("Natural Gas", "Boilers", round(natural_gas_consumed_by_boilers, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Steam Boilers", "Heating", round(100 * 0.85 * natural_gas_consumed_by_steam_boilers / total_energy, 2))
+    get_list_element("Natural Gas", "Steam Boilers", round(natural_gas_consumed_by_steam_boilers, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Boilers", "Heating", round(100 * 0.85 * natural_gas_consumed_by_boilers / total_energy, 2))
+    get_list_element("Natural Gas", "Cells", round(natural_gas_consumed_by_cells, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Boilers", "Thermal Losses", round(100 * 0.145 * natural_gas_consumed_by_boilers / total_energy, 2))
+    get_list_element("Steam Boilers", "Heating", round(0.85 * natural_gas_consumed_by_steam_boilers, 2))
+)
+
+ls_current_values.append(
+    get_list_element("Boilers", "Heating", round(0.85 * natural_gas_consumed_by_boilers, 2))
+)
+
+ls_current_values.append(
+    get_list_element("Boilers", "Thermal Losses", round(0.145 * natural_gas_consumed_by_boilers, 2))
 )
 
 ls_current_values.append(
     get_list_element("Heating", "Hospital (Heat)",
-        round(100 * 0.7 * ((natural_gas_consumed_by_boilers + natural_gas_consumed_by_steam_boilers)) / total_energy, 2))
+        round(0.7 * ((natural_gas_consumed_by_boilers + natural_gas_consumed_by_steam_boilers)), 2))
 )
 
 ls_current_values.append(
     get_list_element("Heating", "Others (Heat)",
-        round(100 * 0.1 * ((natural_gas_consumed_by_boilers + natural_gas_consumed_by_steam_boilers)) / total_energy, 2))
+        round(0.1 * ((natural_gas_consumed_by_boilers + natural_gas_consumed_by_steam_boilers)), 2))
 )
 
 ls_current_values.append(
-    get_list_element("Cells", "Thermal Losses", round(100 * cells_thermal_losses / total_energy, 2))
+    get_list_element("Cells", "Thermal Losses", round(cells_thermal_losses, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Cells", "Electricity", round(100 * 0.52 * natural_gas_consumed_by_cells / total_energy, 2))
+    get_list_element("Cells", "Electricity", round(0.52 * natural_gas_consumed_by_cells, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Electricity Grid", "Electricity", round(100 * electricity_usage_kWh / total_energy, 2))
+    get_list_element("Electricity Grid", "Electricity", round(electricity_usage_kWh, 2))
 )
 
 ls_current_values.append(
-    get_list_element("Electricity", "Chillers", round(100 * chiller_to_cooling(cooling_plant_energy) / total_energy, 2))
+    get_list_element("Electricity", "Chillers", round(chiller_to_cooling(cooling_plant_energy), 2))
 )
 
 ls_current_values.append(
-    get_list_element("Chillers", "Cooling", round(100 * chiller_to_cooling(cooling_plant_energy) / total_energy, 2))
+    get_list_element("Chillers", "Cooling", round(chiller_to_cooling(cooling_plant_energy), 2))
 )
 
 ls_current_values.append(
     get_list_element("Electricity", "Hospital Main",
-        round(100 * 0.6956 * (electricity_usage_kWh + 0.52 * natural_gas_consumed_by_cells - chiller_to_cooling(cooling_plant_energy)) / total_energy, 2))
+        round(0.6956 * (electricity_usage_kWh + 0.52 * natural_gas_consumed_by_cells - chiller_to_cooling(cooling_plant_energy)), 2))
 )
 
 ls_current_values.append(
     get_list_element("Electricity", "Others",
-        round(100 * 0.3043 * (electricity_usage_kWh + 0.52 * natural_gas_consumed_by_cells - chiller_to_cooling(cooling_plant_energy)) / total_energy, 2))
+        round(0.3043 * (electricity_usage_kWh + 0.52 * natural_gas_consumed_by_cells - chiller_to_cooling(cooling_plant_energy)), 2))
 )
-
 
 def source_destiny():
     return ls_current_values
