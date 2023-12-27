@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 
-Client = MongoClient("mongodb://52.36.190.119:27017/")
+Client = MongoClient("mongodb://172.31.43.75:27017/")#("mongodb://52.36.190.119:27017/")
 db = Client["sanmarcos"]
 col = db["attributes"]
 col2 = db["attributehistories"]
